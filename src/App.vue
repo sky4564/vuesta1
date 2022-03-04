@@ -9,8 +9,8 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-<back-ground :게시물 = "게시물" ></back-ground>
-<button @click="more">더보기</button>
+  <back-ground :게시물="게시물"></back-ground>
+  <button @click="more">더보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -19,50 +19,47 @@
     </ul>
   </div>
 
-  <h4>안녕 {{$store.state.name}}</h4>
+  <h4>안녕 {{ $store.state.name }}</h4>
+  <h4> url 주소 : {{ $store.state.TEST_INFO }}</h4>
 </template>
 
 <script>
-import BackGround from './components/BackGround.vue';
+import BackGround from "./components/BackGround.vue";
 import postdata from "./assets/postdata";
-import BACK_OFFICE_URLS from "./common/api-controll";
-import axios from 'axios';
+import mdata from "./common/store"
+import axios from "axios";
 
-
-axios.get()
+axios.get();
 export default {
   name: "App",
 
   data() {
     return {
-      API : BACK_OFFICE_URLS,
-      게시물 : postdata,
-      
-    }
+      mdata : mdata,
+      게시물: postdata,
+    };
   },
-  
-  
-  
+
   components: {
     BackGround,
-  
   },
-  methods : {
-    more(){
-      axios.get(this.API.TEST_INFO)
-      .then((results) => {
-        console.log(results.data)
+  methods: {
+    changeName() {
+      this.store.state.name = "work!";
+      console.log("changeName is work")
+    },
+
+    more() {
+      axios.get('https://codingapple1.github.io/vue/more0.json').then((results) => {
+        console.log(results.data);
+        console.log(mdata.state.TEST_INFO);
         this.게시물.push(results.data);
-      })
-    }
-
-  }
-
-
-
-
+        
+      });
+      
+    },
+  },
 };
-    
 </script>
 
 <style>
