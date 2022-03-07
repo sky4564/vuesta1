@@ -10,7 +10,7 @@
   </div>
 
   <back-ground :게시물="게시물"></back-ground>
-  <button @click="more">더보기</button>
+  <button @click="changeName">더보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -42,6 +42,8 @@ import SPACE_DATA from "./assets/space";
 
 
 
+
+
 axios.get();
 export default {
   name: "App",
@@ -54,6 +56,7 @@ export default {
         /**MainData[1]
          */ SPACE_DATA,
       ],
+      
       게시물: postdata,
     };
   },
@@ -64,7 +67,7 @@ export default {
 
   methods: {
     changeName() {
-      this.store.state.name = "work!";
+      this.$store.state.name = "work!";
       console.log("changeName is work");
     },
 
