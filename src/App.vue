@@ -1,4 +1,5 @@
 <template>
+  <router-view></router-view>
   <div class="header">
     <ul class="header-button-left">
       <li>Cancel</li>
