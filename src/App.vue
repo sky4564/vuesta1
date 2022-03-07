@@ -69,6 +69,7 @@ export default {
     changeName() {
       this.$store.state.name = "work!";
       console.log("changeName is work");
+      console.log("changeName is work");
     },
 
     more() {
