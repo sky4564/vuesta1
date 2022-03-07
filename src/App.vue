@@ -20,14 +20,27 @@
   </div>
 
   <h4>안녕 {{ $store.state.name }}</h4>
-  <h4> url 주소 : {{ $store.state.TEST_INFO }}</h4>
+  <h4>url 주소 : {{ MainData }}</h4>
+  <h4>url 주소 : {{ MainData[0] }}</h4>
+  <h4>url 주소 : {{ MainData[1] }}</h4>
+  <h4>url 주소 : {{ MainData[1][0] }}</h4>
+  <h4>url 주소 : {{ MainData[1][0].area1 }}</h4>
 </template>
 
 <script>
 import BackGround from "./components/BackGround.vue";
+
 import postdata from "./assets/postdata";
-import mdata from "./common/store"
+
+
+//tools
 import axios from "axios";
+
+//maindata
+import API_DATA from "./common/api-controll";
+import SPACE_DATA from "./assets/space";
+
+
 
 axios.get();
 export default {
@@ -35,7 +48,12 @@ export default {
 
   data() {
     return {
-      mdata : mdata,
+      MainData: [
+        /**MainData[0]
+         */ API_DATA,
+        /**MainData[1]
+         */ SPACE_DATA,
+      ],
       게시물: postdata,
     };
   },
@@ -43,20 +61,19 @@ export default {
   components: {
     BackGround,
   },
+
   methods: {
     changeName() {
       this.store.state.name = "work!";
-      console.log("changeName is work")
+      console.log("changeName is work");
     },
 
     more() {
-      axios.get('https://codingapple1.github.io/vue/more0.json').then((results) => {
+      axios.get(this.MainData.state.API_ITEM).then((results) => {
         console.log(results.data);
-        console.log(mdata.state.TEST_INFO);
+        console.log(this.MainData.BACK_OFFICE_URLS.API_ITEM);
         this.게시물.push(results.data);
-        
       });
-      
     },
   },
 };
