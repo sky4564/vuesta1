@@ -11,7 +11,7 @@
   </div>
 
   <back-ground :게시물="게시물"></back-ground>
-  <button @click="changeName">더보기</button>
+  <button @click="more">더보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -21,11 +21,7 @@
   </div>
 
   <h4>안녕 {{ $store.state.name }}</h4>
-  <h4>url 주소 : {{ MainData }}</h4>
-  <h4>url 주소 : {{ MainData[0] }}</h4>
-  <h4>url 주소 : {{ MainData[1] }}</h4>
-  <h4>url 주소 : {{ MainData[1][0] }}</h4>
-  <h4>url 주소 : {{ MainData[1][0].area1 }}</h4>
+  
 </template>
 
 <script>
@@ -74,15 +70,22 @@ export default {
     },
 
     more() {
-      axios.get(this.MainData.state.API_ITEM).then((results) => {
+      axios.get(this.MainData[0][0].API_URL).then((results) => {
         console.log(results.data);
-        console.log(this.MainData.BACK_OFFICE_URLS.API_ITEM);
+        console.log(this.MainData[0][0].API_URL);
         this.게시물.push(results.data);
       });
     },
   },
 };
 </script>
+
+
+
+
+
+
+
 
 <style>
 body {
