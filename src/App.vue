@@ -1,5 +1,6 @@
 <template>
   <goBack></goBack>
+  <login-func></login-func>
   <router-view></router-view>
   
   <div class="header">
@@ -37,10 +38,14 @@ import postdata from "./assets/postdata";
 //tools
 import axios from "axios";
 import goBack from "./components/goBack.vue";
+import loginFunc from "./components/loginFunc.vue"
+
+
 
 //maindata
 import API_DATA from "./common/api-controll";
 import SPACE_DATA from "./assets/space";
+
 
 
 
@@ -64,10 +69,11 @@ export default {
   },
 
   components: {
-    BackGround,goBack,
+    BackGround,goBack,loginFunc
   },
 
-  methods: {
+  methods : {
+    
     changeName() {
       this.$store.state.name = "work!";
       console.log("changeName is work");
@@ -82,6 +88,8 @@ export default {
       });
     },
   },
+  
+    
 };
 </script>
 
