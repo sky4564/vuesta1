@@ -1,5 +1,7 @@
 <template>
+  <goBack></goBack>
   <router-view></router-view>
+  
   <div class="header">
     <ul class="header-button-left">
       <li>Cancel</li>
@@ -30,8 +32,11 @@ import BackGround from "./components/BackGround.vue";
 import postdata from "./assets/postdata";
 
 
+
+
 //tools
 import axios from "axios";
+import goBack from "./components/goBack.vue";
 
 //maindata
 import API_DATA from "./common/api-controll";
@@ -59,7 +64,7 @@ export default {
   },
 
   components: {
-    BackGround,
+    BackGround,goBack,
   },
 
   methods: {
