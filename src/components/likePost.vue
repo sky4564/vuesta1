@@ -1,18 +1,30 @@
 
 <template>
   <div>
-  <div>{{coco}}</div>
-  <div v-for="i in coco" :key="i.id">
-      {{ i.name }}  <br>
-      {{ i.userImage }} <br>
-      {{ i.postImage }} <br>
-      {{ i.likes }} <br>
-      {{ i.date }} <br>
-      {{ i.liked }} <br>
-      {{ i.content }} <br>
-      {{ i.filter }} <br>
+<!-- 데이터바인딩 테스트 start -->
 
+  <div>{{coco}}</div>
+
+  <hr>
+
+  <div v-for="i in coco" :key="i.id">
+    <p>{{ i.name }} </p> 
+    <p>{{ i.userImage }}</p> 
+    <p>{{ i.postImage }}</p> 
+    <p>{{ i.likes }}</p> 
+    <p>{{ i.date }}</p> 
+    <p>{{ i.liked }}</p> 
+    <p>{{ i.content }}</p> 
+    <p>{{ i.filter }}</p> 
+    <div>
+        <img :src="i.userImage">
+    </div>
+
+    <hr>
   </div>
+
+<!-- 데이터바인딩 테스트 end -->
+
   <button @click="ADMINTEST">ADMIN TEST</button>
   <button @click="likepost">post</button>
   <button @click="likeput">put</button>  
