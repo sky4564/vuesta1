@@ -1,6 +1,7 @@
 <template>
   <goBack></goBack>
   <login-func></login-func>
+  <like-func></like-func>
   <router-view></router-view>
   
   <div class="header">
@@ -39,7 +40,7 @@ import postdata from "./assets/postdata";
 import axios from "axios";
 import goBack from "./components/goBack.vue";
 import loginFunc from "./components/loginFunc.vue"
-
+import likeFunc from "./components/likePost.vue"
 
 
 //maindata
@@ -69,7 +70,7 @@ export default {
   },
 
   components: {
-    BackGround,goBack,loginFunc
+    BackGround,goBack,loginFunc,likeFunc
   },
 
   methods : {
