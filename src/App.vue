@@ -36,9 +36,7 @@ import postdata from "./assets/postdata";
 
 //tools
 import axios from "axios";
-import goBack from "./components/goBack.vue";
-import loginFunc from "./components/loginFunc.vue"
-import likeFunc from "./components/likePost.vue"
+
 
 
 //maindata
@@ -68,7 +66,7 @@ export default {
   },
 
   components: {
-    BackGround,goBack,loginFunc,likeFunc
+    BackGround,
   },
 
   methods : {

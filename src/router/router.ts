@@ -8,10 +8,7 @@ const routes = [
     path: "/space",
     component: Space,
   },
-  {
-    path: "/test",
-    component: comTest,
-  },
+
 ];
 
 const router = createRouter({

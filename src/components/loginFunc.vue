@@ -1,5 +1,5 @@
 <template>
-  <button @click="sayHi">asd</button>
+  <button @click="loginCheck"> IT's login ? </button>
 </template>
 
 <script>
