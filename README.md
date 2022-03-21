@@ -22,3 +22,22 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### server setup
+```
+pipenv shell
+```
+
+```
+pipenv install
+```
+
+### move dir to backend to runserver 
+```
+cd backend
+```
+
+### run server
+```
+python manage.py runserver
+```
