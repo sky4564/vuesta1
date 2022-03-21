@@ -1,6 +1,6 @@
 
 <template>
-  <button @click="like">likebtn get</button>
+  <button @click="ADMINTEST">ADMIN TEST</button>
   <button @click="likepost">post</button>
   <button @click="likeput">put</button>
 </template>
@@ -9,7 +9,7 @@
 import axios from 'axios'
 export default {
     methods : {
-        like(){
+        ADMINTEST(){
             axios.get('https://reqres.in/api/users').then((res) => {
             console.log(res.data);
             });

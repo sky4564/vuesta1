@@ -1,5 +1,6 @@
 <template>
 
+  <likepost></likepost>
   <router-view></router-view>
   
   <div class="header">
@@ -40,8 +41,10 @@ import axios from "axios";
 
 
 //maindata
+import likepost from "./components/likePost.vue"
 import API_DATA from "./common/api-controll";
 import SPACE_DATA from "./assets/space";
+
 
 
 
@@ -66,7 +69,7 @@ export default {
   },
 
   components: {
-    BackGround,
+    BackGround,likepost,
   },
 
   methods : {
