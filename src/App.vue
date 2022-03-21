@@ -1,7 +1,5 @@
 <template>
-  <goBack></goBack>
-  <login-func></login-func>
-  <like-func></like-func>
+
   <router-view></router-view>
   
   <div class="header">
