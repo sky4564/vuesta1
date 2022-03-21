@@ -37,7 +37,22 @@ pipenv install
 cd backend
 ```
 
+### sqlite 장착시기키 db(sqlite3)와 장고앱을 연결합니다.
+```
+python manage.py makemigrations
+
+python manage.py. migrate
+```
+
+### sqlite 장착시기키 db(sqlite3)와 장고앱을 연결합니다.
+```
+python manage.py makemigrations
+
+python manage.py. migrate
+```
+
+
+
 ### run server
 ```
 python manage.py runserver
-```
