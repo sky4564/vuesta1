@@ -1,5 +1,6 @@
 <template>
 
+  <history-move></history-move>
   <likepost></likepost>
   <router-view></router-view>
   
@@ -44,6 +45,7 @@ import axios from "axios";
 import likepost from "./components/likePost.vue"
 import API_DATA from "./common/api-controll";
 import SPACE_DATA from "./assets/space";
+import HistoryMove from './components/historyMove.vue';
 
 
 
@@ -70,6 +72,7 @@ export default {
 
   components: {
     BackGround,likepost,
+    HistoryMove,
   },
 
   methods : {
