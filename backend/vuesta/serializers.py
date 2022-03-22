@@ -7,8 +7,8 @@ class FeedSerializer(serializers.ModelSerializer):
         model = Feed
         fields = (
             "name",
-            "userImage",
-            "postImage",
+            "get_userImage",
+            "get_postImage",
             "likes",
             "date",
             "liked",

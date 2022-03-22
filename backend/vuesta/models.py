@@ -10,3 +10,17 @@ class Feed(models.Model):
     liked = models.BooleanField(default=False)
     content = models.TextField(max_length=255)
     filter = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        ordering = ('-date',)
+
+    def get_userImage(self):
+        if self.userImage:
+            return 'http://127.0.0.1:8000' + self.userImage.url
+        return ''
+
+    def get_postImage(self):
+        if self.postImage:
+            return 'http://127.0.0.1:8000' + self.postImage.url
+        return ''
+
