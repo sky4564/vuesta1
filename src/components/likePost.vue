@@ -9,15 +9,16 @@
 
   <div v-for="i in coco" :key="i.id">
     <p>{{ i.name }} </p> 
-    <p>{{ i.userImage }}</p> 
-    <p>{{ i.postImage }}</p> 
+    <p>{{ i.get_userImage }}</p> 
+    <p>{{ i.get_postImage }}</p> 
     <p>{{ i.likes }}</p> 
     <p>{{ i.date }}</p> 
     <p>{{ i.liked }}</p> 
     <p>{{ i.content }}</p> 
     <p>{{ i.filter }}</p> 
     <div>
-        <img :src="i.userImage">
+        <img :src="i.get_userImage" 
+            style="height:300px; width:200px">
     </div>
 
     <hr>
@@ -40,7 +41,7 @@ export default {
             image1: '',
             image2: '',
 
-            coco: ''
+            coco: []
         }
     },
     methods : {
