@@ -2,7 +2,7 @@
   <button @click="ADMINTEST">ADMIN TEST</button>&&
   <button @click="LIKETEST">POST TEST</button>
   
-  <div>
+  
 
 <!-- 데이터바인딩 테스트 start -->
 
