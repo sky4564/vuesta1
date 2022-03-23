@@ -6,5 +6,6 @@ from .views import *
 urlpatterns = [
     path('feed/', FeedList.as_view()),
     path('feed/detail/<int:pk>/', FeedDetail.as_view()),
+    path('feed/like/<int:pk>/', LikeFeed.as_view()),
 
 ]
