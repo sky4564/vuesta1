@@ -1,7 +1,9 @@
 <template>
 
+
   <history-move></history-move>
-  <likepost></likepost>
+  <likepost v-if="master == 'bm' "></likepost>
+  <smlikepost v-if="master =='sm' " ></smlikepost>
   <router-view></router-view>
   
   <div class="header">
@@ -43,6 +45,7 @@ import axios from "axios";
 
 //maindata
 import likepost from "./components/likePost.vue"
+import smlikepost from "./components/smLikePost.vue"
 import API_DATA from "./common/api-controll";
 import SPACE_DATA from "./assets/space";
 import HistoryMove from './components/historyMove.vue';
@@ -59,6 +62,7 @@ export default {
 
   data() {
     return {
+      
       MainData: [
         /**MainData[0]
          */ API_DATA,
@@ -67,11 +71,15 @@ export default {
       ],
       
       게시물: postdata,
+
+      master : 'sm',
+      
+      
     };
   },
 
   components: {
-    BackGround,likepost,
+    BackGround,likepost,smlikepost,
     HistoryMove,
   },
 

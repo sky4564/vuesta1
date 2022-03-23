@@ -1,5 +1,5 @@
 <template>
-  <button @click="ADMINTEST">BM'sADMIN TEST</button>&&
+  <button @click="ADMINTEST">SM'sADMIN TEST</button>&&
   <button @click="PUTTEST">POST TEST</button>
   <button @click="DELETETEST">DELETETEST</button>
   

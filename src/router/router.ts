@@ -1,6 +1,6 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Space from '../assets/space';
-import comTest from '../components/ComTest.vue';
+
 
 
 const routes = [
