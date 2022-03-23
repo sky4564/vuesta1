@@ -6,6 +6,7 @@ class FeedSerializer(serializers.ModelSerializer):
     class Meta:
         model = Feed
         fields = (
+            "id",
             "name",
             "userImage",
             "postImage",
