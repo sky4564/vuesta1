@@ -36,7 +36,8 @@ class FeedDetail(APIView):
 
     def put(self, request, pk, format=None):
         feed = self.get_object(pk)
-        serializer = FeedSerializer(feed, data=request.data)
+        context = request.data
+        serializer = FeedSerializer(feed, data=context, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -46,3 +47,29 @@ class FeedDetail(APIView):
         feed = self.get_object(pk)
         feed.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+class LikeFeed(APIView):
+    def get_object(self, pk):
+        try:
+            return Feed.objects.get(pk=pk)
+        except Feed.DoesNotExist:
+            raise Http404
+
+    def put(self, request, pk, format=None):
+
+        feed = self.get_object(pk)
+
+
+        if feed.liked:
+            context = request.data
+            serializer = FeedSerializer(feed, data={'liked': False, 'likes': feed.likes-1}, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+        else:
+            serializer = FeedSerializer(feed, data={'liked': True, 'likes': feed.likes+1}, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
