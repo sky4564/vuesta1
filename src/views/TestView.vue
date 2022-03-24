@@ -34,7 +34,54 @@
   <div>
     <p>***********************************</p>
     <h3>FeedList POST API test start</h3>
-    <button @click="POSTTEST">POST TEST</button>
+    <form v-on:submit.prevent="POSTTEST">
+      <div style="margin-top: 10px">
+        <label for="name">Name : </label>
+        <input
+          type="text"
+          id="name"
+          placeholder="Your name"
+          v-model="form.name"
+        />
+      </div>
+
+      <div class="form-group" style="margin-top: 10px">
+        <label for="name">userImage : </label>
+        <input
+          type="file"
+          name="userImage"
+          id="userImage"
+          @change="onFileChange"
+        />
+      </div>
+
+      <div class="form-group" style="margin-top: 10px">
+        <label for="name">postImage : </label>
+        <input
+          type="file"
+          name="postImage"
+          id="postImage"
+          @change="onFileChange"
+        />
+      </div>
+
+      <div class="form-group" style="margin-top: 10px">
+        <label for="name">content : </label>
+        <input
+          type="text"
+          id="content"
+          placeholder="content"
+          v-model="form.content"
+        />
+      </div>
+
+      <div style="margin-top: 10px">
+        <button type="submit">feed post!</button>
+      </div>
+    </form>
+    <div style="margin-top: 10px">
+      <button @click="CheckOut">click and check console</button>
+    </div>
     <h3>FeedList POST API test end</h3>
     <p>***********************************</p>
   </div>
@@ -59,9 +106,13 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      image1: '',
-      image2: '',
       FeedList: '',
+      form: {
+        name: '',
+        userImage: Image,
+        postImage: Image,
+        content: '',
+      },
     };
   },
   methods: {
@@ -86,10 +137,7 @@ export default {
 
     POSTTEST() {
       axios
-        .post('http://127.0.0.1:8000/api/v1/feed/', {
-          name: '사용자이름',
-          content: 'post내용',
-        })
+        .post('http://127.0.0.1:8000/api/v1/feed/', this.form)
         .then((res) => {
           console.log('POST WORK');
           console.log(res);
@@ -103,6 +151,18 @@ export default {
         .then(() => {
           console.log('post post...');
         });
+    },
+    onFileChange(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) {
+        return alert('파일넣으셈');
+      }
+
+      console.log(e.target.id);
+      this.userImage = files[0];
+    },
+    CheckOut() {
+      console.log(this.form);
     },
   },
 };
