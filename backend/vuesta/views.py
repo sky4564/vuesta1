@@ -58,10 +58,8 @@ class LikeFeed(APIView):
     def put(self, request, pk, format=None):
 
         feed = self.get_object(pk)
-
-
+        
         if feed.liked:
-            context = request.data
             serializer = FeedSerializer(feed, data={'liked': False, 'likes': feed.likes-1}, partial=True)
             if serializer.is_valid():
                 serializer.save()
