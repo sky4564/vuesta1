@@ -72,7 +72,7 @@ export default {
       
       게시물: postdata,
 
-      master : 'sm',
+      master : 'bm',
       
       
     };
