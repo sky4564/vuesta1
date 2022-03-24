@@ -160,6 +160,7 @@ export default {
 
       console.log(e.target.id);
       this.userImage = files[0];
+      console.log(this.userImage);
     },
     CheckOut() {
       console.log(this.form);

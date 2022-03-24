@@ -3,8 +3,8 @@ from PIL import Image
 
 class Feed(models.Model):
     name = models.CharField(max_length=255)
-    userImage = models.ImageField(upload_to='uploads/')
-    postImage = models.ImageField(upload_to='uploads/')
+    userImage = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    postImage = models.ImageField(upload_to='uploads/', blank=True, null=True)
     likes = models.IntegerField(default=0)
     date = models.DateField(auto_now_add=True)
     liked = models.BooleanField(default=False)
