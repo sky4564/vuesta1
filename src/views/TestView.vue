@@ -8,17 +8,20 @@
     <div>
       <div v-for="Feed in FeedList" :key="Feed">
         <p>응애 나 {{ Feed.id }}번 아이디</p>
-        <p>{{ Feed.name }}</p>
-        <p>{{ Feed.get_userImage }}</p>
-        <p>{{ Feed.get_postImage }}</p>
-        <p>{{ Feed.likes }}</p>
-        <p>{{ Feed.date }}</p>
-        <p>{{ Feed.liked }}</p>
-        <p>{{ Feed.content }}</p>
-        <p>{{ Feed.filter }}</p>
+        <p>name : {{ Feed.name }}</p>
         <div>
+          <p>userImage</p>
           <img :src="Feed.get_userImage" style="height: 300px; width: 200px" />
         </div>
+        <div>
+          <p>postImage</p>
+          <img :src="Feed.get_postImage" style="height: 300px; width: 200px" />
+        </div>
+        <p>likes : {{ Feed.likes }}</p>
+        <p>date : {{ Feed.date }}</p>
+        <p>좋아요했니? : {{ Feed.liked }}</p>
+        <p>content : {{ Feed.content }}</p>
+        <p>사진필터 : {{ Feed.filter }}</p>
       </div>
     </div>
 
@@ -34,7 +37,7 @@
   <div>
     <p>***********************************</p>
     <h3>FeedList POST API test start</h3>
-    <form v-on:submit.prevent="POSTTEST">
+    <form v-on:submit.prevent="POSTTEST" enctype="multipart/form-data">
       <div style="margin-top: 10px">
         <label for="name">Name : </label>
         <input
@@ -49,8 +52,8 @@
         <label for="name">userImage : </label>
         <input
           type="file"
-          name="userImage"
           id="userImage"
+          ref="userImage"
           @change="onFileChange"
         />
       </div>
@@ -59,9 +62,9 @@
         <label for="name">postImage : </label>
         <input
           type="file"
-          name="postImage"
           id="postImage"
-          @change="onFileChange"
+          ref="postImage"
+          @change="onFileChange2"
         />
       </div>
 
@@ -82,6 +85,7 @@
     <div style="margin-top: 10px">
       <button @click="CheckOut">click and check console</button>
     </div>
+
     <h3>FeedList POST API test end</h3>
     <p>***********************************</p>
   </div>
@@ -109,8 +113,8 @@ export default {
       FeedList: '',
       form: {
         name: '',
-        userImage: Image,
-        postImage: Image,
+        userImage: '',
+        postImage: '',
         content: '',
       },
     };
@@ -123,21 +127,28 @@ export default {
         .then((res) => {
           console.log(res.data);
           this.FeedList = res.data;
+          console.log('axios work');
         })
 
         .catch(function (err) {
           console.log(err);
           console.log('에러입니다.');
-        })
-
-        .then(function () {
-          console.log('axios work');
         });
     },
 
     POSTTEST() {
+      const formData = new FormData();
+      formData.append('name', this.form.name);
+      formData.append('userImage', this.form.userImage);
+      formData.append('postImage', this.form.postImage);
+      formData.append('content', this.form.content);
+
       axios
-        .post('http://127.0.0.1:8000/api/v1/feed/', this.form)
+        .post('http://127.0.0.1:8000/api/v1/feed/', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
         .then((res) => {
           console.log('POST WORK');
           console.log(res);
@@ -146,24 +157,17 @@ export default {
         .catch((err) => {
           console.log('post error');
           console.log(err);
-        })
-
-        .then(() => {
-          console.log('post post...');
         });
     },
-    onFileChange(e) {
-      var files = e.target.files || e.dataTransfer.files;
-      if (!files.length) {
-        return alert('파일넣으셈');
-      }
 
-      console.log(e.target.id);
-      this.userImage = files[0];
-      console.log(this.userImage);
+    onFileChange() {
+      this.form.userImage = this.$refs.userImage.files[0];
+    },
+    onFileChange2() {
+      this.form.postImage = this.$refs.postImage.files[0];
     },
     CheckOut() {
-      console.log(this.form);
+      console.log(this.$data.form);
     },
   },
 };
