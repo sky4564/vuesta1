@@ -1,12 +1,13 @@
 import { createWebHistory, createRouter } from "vue-router";
-import Space from '../assets/space';
+import Home from '../views/HomeView.vue';
 import comTest from '../components/ComTest.vue';
 import login from '../components/loginFunc.vue'
+import funcTest from "../components/funcTest.vue"
 
 const routes = [
   {
-    path: "/space",
-    component: Space,
+    path: "/",
+    component: Home,
   },
   {
     path: "/test",
@@ -15,6 +16,10 @@ const routes = [
   {
     path: "/login",
     component: login,
+  },
+  {
+    path: "/func",
+    component: funcTest,
   },
 ];
 

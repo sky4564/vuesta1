@@ -53,7 +53,7 @@ export default {
         })
 
         .then(function () {
-          console.log('axios work');
+          console.log('axios work');                                                                                                         
         });
     },
 
