@@ -48,8 +48,8 @@
         />
       </div>
 
-      <div class="form-group" style="margin-top: 10px">
-        <label for="name">userImage : </label>
+      <div style="margin-top: 10px">
+        <label for="userImage">userImage : </label>
         <input
           type="file"
           id="userImage"
@@ -58,8 +58,8 @@
         />
       </div>
 
-      <div class="form-group" style="margin-top: 10px">
-        <label for="name">postImage : </label>
+      <div style="margin-top: 10px">
+        <label for="postImage">postImage : </label>
         <input
           type="file"
           id="postImage"
@@ -68,8 +68,8 @@
         />
       </div>
 
-      <div class="form-group" style="margin-top: 10px">
-        <label for="name">content : </label>
+      <div style="margin-top: 10px">
+        <label for="content">content : </label>
         <input
           type="text"
           id="content"
